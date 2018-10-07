@@ -10,3 +10,6 @@ sleepingIndex = 0.9
 
 print('My name is', name, 'and I give eating ice cream a score of', iceCreamRating, 'out of 10!')
 print('I am', name, 'and my sleeping enjoyment index is', sleepingIndex, 'out of 1.0!')
+
+#testing for git
+#test test test
