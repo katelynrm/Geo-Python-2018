@@ -11,7 +11,8 @@ stationNames = ['Harmaja', 'Kaisaniemi', 'Kaivopuisto', 'Kumpula lighthouse', \
 
 stationStartYears = [1989, 1844, 1904, 2005, 2003, 1937, 2016, 2012]
 
-selectedStation = 1
+#Second error, need to input name not number
+selectedStation = 'Harmaja'
 
 # DO NOT EDIT THIS CELL
 stationIndex = stationNames.index(selectedStation)
