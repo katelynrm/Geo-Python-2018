@@ -11,13 +11,14 @@ stationNames = ['Harmaja', 'Kaisaniemi', 'Kaivopuisto', 'Kumpula lighthouse', \
 
 stationStartYears = [1989, 1844, 1904, 2005, 2003, 1937, 2016, 2012]
 
-#Second error, need to input name not number
+#Second edit, need to input name not number
 selectedStation = 'Harmaja'
 
-# DO NOT EDIT THIS CELL
 stationIndex = stationNames.index(selectedStation)
 
-stationYears = 2018 - stationStartYears[selectedStation]
+#Third edit, changed selectedStation to stationIndex
+stationYears = 2018 - stationStartYears[stationIndex]
 
+#Fourth edit, add quote after years.
 print("The Helsinki", selectedStation, "station has been operational for", \
-      stationYears, "years.)
+      stationYears, "years.")
