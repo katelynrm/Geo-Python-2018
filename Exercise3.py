@@ -20,7 +20,8 @@ for i in range(21):
 #PROBLEM 2#
 ###########
 
-#categorize temps into cold, slippery, comfortable and warm by looping with nested conditionals
+#categorize temps into cold, slippery, comfortable and warm by looping with nested conditionals then print number of
+#days in each category
 #here is the list of temps
 temperatures = [-5.4, 1.0, -1.3, -4.8, 3.9, 0.1, -4.4, 4.0, -2.2, -3.9, 4.4,
                 -2.5, -4.6, 5.1, 2.1, -2.4, 1.9, -3.3, -4.8, 1.0, -0.8, -2.8,
@@ -49,3 +50,28 @@ for i in range(len(temperatures)):
     else:
         warm.append(i)
     
+
+#Print the number of days the temps occurred in each category
+        
+cold_times = len(cold)
+slippery_times = len(slippery)
+comfortable_times = len(comfortable)
+warm_times = len(warm)
+
+print("In April 2013 it was cold", cold_times, "times.")
+print("In April 2013 it was slippery", slippery_times, "times.")
+print("In April 2013 it was comfortable", comfortable_times, "times.")
+print("In April 2013 it was warm", warm_times, "times.")
+
+    
+###########
+#PROBLEM 3#
+###########
+
+
+
+
+
+
+
+
