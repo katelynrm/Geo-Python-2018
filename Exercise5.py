@@ -20,3 +20,12 @@ station_count = len(dataFrame['USAF'].unique())
 print("Mean temperature in Fahrenheit is ", round(temp_mean,1))
 print("Standard deviation of maximum temperature is ", round(temp_max_std, 1))
 print("The number of unique stations is ", station_count)
+
+
+############
+#Problem 2a#
+############
+
+selected = dataFrame[['USAF', 'YR--MODAHRMN', 'TEMP', 'MAX', 'MIN']].dropna(subset=['TEMP'])
+
+selected['Celsius'] = round(((selected['TEMP']-32)/1.8), 1).astype(int)
