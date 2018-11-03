@@ -47,4 +47,34 @@ fp_r = r'C:\Users\katel\Documents\AutoGIS\2018\Geo-Python-2018\Rovaniemi_temps_M
 kumpula.to_csv(fp_k, sep=',', index=False, float_format='%.2f')
 rovaniemi.to_csv(fp_r, sep=',', index=False, float_format='%.2f')
  
+############
+#Problem 3#
+############
 
+kumpula_median = kumpula['TEMP'].median()
+rovaniemi_median = rovaniemi['TEMP'].median()
+
+
+print("Kumpula median: ", kumpula_median)
+print("Rovaniemi median: ", rovaniemi_median)
+
+
+kumpula_may = kumpula.loc[(kumpula['YR--MODAHRMN']>= 201705010000) & (kumpula['YR--MODAHRMN']<= 201705309999)]
+rovaniemi_may = rovaniemi.loc[(rovaniemi['YR--MODAHRMN']>= 201705010000) & (rovaniemi['YR--MODAHRMN']<= 201705309999)]
+
+kumpula_june = kumpula.loc[(kumpula['YR--MODAHRMN']>= 201706010000) & (kumpula['YR--MODAHRMN']<= 201706299999)]
+rovaniemi_june = rovaniemi.loc[(rovaniemi['YR--MODAHRMN']>= 201706010000) & (rovaniemi['YR--MODAHRMN']<= 201706299999)]
+
+print('The mean temp of Kumpula in May 2017 was:', kumpula_may['TEMP'].mean())
+print('The min temp of Kumpula in May 2017 was:', kumpula_may['MIN'].min())
+print('The max temp of Kumpula in May 2017 was:', kumpula_may['MAX'].max())
+print('The mean temp of Rovaniemi in May 2017 was:', rovaniemi_may['TEMP'].mean())
+print('The mean temp of Rovaniemi in May 2017 was:', rovaniemi_may['MIN'].min())
+print('The mean temp of Rovaniemi in May 2017 was:', rovaniemi_may['TEMP'].max())
+
+print('The mean temp of Kumpula in June 2017 was:', kumpula_june['TEMP'].mean())
+print('The min temp of Kumpula in June 2017 was:', kumpula_june['MIN'].min())
+print('The max temp of Kumpula in June 2017 was:', kumpula_june['MAX'].max())
+print('The mean temp of Rovaniemi in June 2017 was:', rovaniemi_june['TEMP'].mean())
+print('The min temp of Rovaniemi in June 2017 was:', rovaniemi_june['MIN'].min())
+print('The max temp of Rovaniemi in June 2017 was:', rovaniemi_june['TEMP'].max())
