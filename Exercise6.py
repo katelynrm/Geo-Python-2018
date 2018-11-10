@@ -19,7 +19,7 @@ print("There are", tavg_nodata_count, "Nan values in TAVG")
 
 #how many no data valuers are in TMIN?
 tmin_nodata_count = data['TMIN'].isna().sum()
-print(tmin_nodata_count)
+print("There are", tmin_nodata_count, "Nan values in TMIN")
 
 
 #how many days are covered in the dataset?
@@ -31,3 +31,72 @@ first_obs = data.sort_values(by='DATE')
 first_obs = first_obs.reset_index()
 
 print("The first observation was made in", first_obs.loc[0, 'DATE'])
+
+#When was the last observation?
+last_obs = data.sort_values(by='DATE', ascending=False)
+last_obs = last_obs.reset_index()
+#alternate without having to sort: last_obs_c = len(data)-1
+print("The last observation was made in", last_obs.loc[0, 'DATE'])
+
+
+#avg temp of all the data
+avg_temp = data["TAVG"].mean()
+print("The average temp of the dataframe is:", avg_temp)
+
+#What was the avg max temp of the summer of 69?
+temps69 = data.loc[(data['DATE']>= 19690501) & (data['DATE']<= 19690831)]
+temps69 = temps69.reset_index()
+avg_temp_69 = temps69['TMAX'].mean()
+print("The avg max temp of the summer of 69 was:", avg_temp_69)
+#What was the max temp of the summer of 69?
+max_temp_69 = temps69['TMAX'].max()
+print("The max temp of the summer of 69 was:", max_temp_69)
+
+'''
+Problem 2
+Calculate the monthly average temperatures for the entire data 
+(i.e. for each year separately) file using the approach taught in the lecture.
+You should store the average temperatures into a new Pandas DataFrame called monthly_data.
+Create a new column called temp_celsius into the monthly_data DataFrame 
+that has the monthly temperatures in Celsius.
+'''
+#monthly_data_cols=['DATE', 'TAVG']
+monthly_data = data.loc[['DATE', 'TAVG']]
+
+col_name = 'temp_celsius'
+monthly_data[col_name] = None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
