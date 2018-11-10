@@ -88,22 +88,44 @@ for key, group in grouped:
 monthly_data['DATE'] = monthly_data['DATE'].astype(int)
 
 
+'''
+Problem 3 - aggregate the data by month, then find temp anomalies
+'''
+#Make date value for each month
+monthly_data['DATE_m'] = monthly_data['DATE'].astype(str)
+monthly_data['DATE_m'] = monthly_data['DATE_m'].str.slice(start=4, stop=6)
+monthly_data['DATE_m'] = monthly_data['DATE_m'].astype(int)
+
+#empty dataframe
+reference_temps = pd.DataFrame()
+
+#group by the date value
+grouped_m = monthly_data.groupby('DATE_m')
+
+#column to aggregate
+mean_col = ['temp_celsius']
 
 
+for key, group in grouped_m:
+    #the value we want to have the mean of is temp_celsius
+    mean_vals = group[mean_col].mean()
+    #the key for aggregating the data is Date
+    mean_vals['DATE_m'] = key
+    #filling the empty data frame with agg temps by date
+    reference_temps = reference_temps.append(mean_vals, ignore_index=True)
+
+reference_temps['DATE_m'] = reference_temps['DATE_m'].astype(int)
+
+#rename the columns
+reference_temps = reference_temps.rename(columns={"DATE_m":"Month", "temp_celsius": "ref_temp"})
 
 
+#Join the data frame to find anomalies
+join = monthly_data.merge(reference_temps, left_on='DATE_m', right_on='Month')
 
+join['diff'] = join['temp_celsius']-join['ref_temp']
 
-
-
-
-
-
-
-
-
-
-
+print(join['diff'].max())
 
 
 
