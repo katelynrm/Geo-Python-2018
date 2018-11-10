@@ -60,15 +60,32 @@ You should store the average temperatures into a new Pandas DataFrame called mon
 Create a new column called temp_celsius into the monthly_data DataFrame 
 that has the monthly temperatures in Celsius.
 '''
-#monthly_data_cols=['DATE', 'TAVG']
-monthly_data = data.loc[['DATE', 'TAVG']]
+#Make monthly values for DATE
+data['DATE'] = data['DATE'].astype(str)
+data['DATE'] = data['DATE'].str.slice(start=0, stop=6)
+data['DATE'] = data['DATE'].astype(int)
+#make a celsius column
+data['temp_celsius'] = (data['TAVG']-32)/1.8
 
-col_name = 'temp_celsius'
-monthly_data[col_name] = None
+#create an empty dataframe that will be filled
+monthly_data = pd.DataFrame()
+
+#group by the date value
+grouped = data.groupby('DATE')
+
+#column to aggregate
+mean_col = ['temp_celsius']
 
 
-
-
+for key, group in grouped:
+    #the value we want to have the mean of is temp_celsius
+    mean_vals = group[mean_col].mean()
+    #the key for aggregating the data is Date
+    mean_vals['DATE'] = key
+    #filling the empty data frame with agg temps by date
+    monthly_data = monthly_data.append(mean_vals, ignore_index=True)
+    
+monthly_data['DATE'] = monthly_data['DATE'].astype(int)
 
 
 
