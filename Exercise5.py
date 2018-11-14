@@ -44,8 +44,8 @@ print("Rovaniemi: \n", rovaniemi.head(), "\n")
 fp_k = r'C:\Users\katel\Documents\AutoGIS\2018\Geo-Python-2018\Kumpula_temps_May_Aug_2017.csv'
 fp_r = r'C:\Users\katel\Documents\AutoGIS\2018\Geo-Python-2018\Rovaniemi_temps_May_Aug_2017.csv'
 
-kumpula.to_csv(fp_k, sep=',', index=False, float_format='%.2f')
-rovaniemi.to_csv(fp_r, sep=',', index=False, float_format='%.2f')
+#kumpula.to_csv(fp_k, sep=',', index=False, float_format='%.2f')
+#rovaniemi.to_csv(fp_r, sep=',', index=False, float_format='%.2f')
  
 ############
 #Problem 3#
@@ -78,3 +78,11 @@ print('The max temp of Kumpula in June 2017 was:', kumpula_june['MAX'].max())
 print('The mean temp of Rovaniemi in June 2017 was:', rovaniemi_june['TEMP'].mean())
 print('The min temp of Rovaniemi in June 2017 was:', rovaniemi_june['MIN'].min())
 print('The max temp of Rovaniemi in June 2017 was:', rovaniemi_june['TEMP'].max())
+
+
+
+
+
+
+
+
