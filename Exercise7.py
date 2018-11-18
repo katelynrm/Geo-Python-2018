@@ -134,48 +134,6 @@ fall_agg['year'] = fall_agg['year'].astype(int)
 
 
 
-#convert dfs to numpy arrays
-winter_date = winter_agg['year'].values
-winter_temp = winter_agg['mean_anomaly'].values
-
-spring_date = spring_agg['year'].values
-spring_temp = spring_agg['mean_anomaly'].values
-
-summer_date = summer_agg['year'].values
-summer_temp = summer_agg['mean_anomaly'].values
-
-fall_date = fall_agg['year'].values
-fall_temp = fall_agg['mean_anomaly'].values
-
-#function to convert to datetime
-def convert(date):
-    return datetime.strptime(date, '%Y%m%d%H%M')
-#convert the dates to datetime, first convert to str
-winter_str = winter_date.astype(str)
-spring_str = spring_date.astype(str)
-summer_str = summer_date.astype(str)
-fall_str = fall_date.astype(str)
-    
-winter_dt = [convert(year) for year in winter_str]
-winter_dt = np.array(winter_dt)
-
-spring_dt = [convert(year) for year in spring_str]
-spring_dt = np.array(spring_dt)
-
-summer_dt = [convert(year) for year in summer_str]
-summer_dt = np.array(summer_dt)
-
-fall_dt = [convert(year) for year in fall_str]
-fall_dt = np.array(fall_dt)
-
-winter_agg['year'] = pd.to_datetime(winter_agg['year'])
-spring_agg['year'] = pd.to_datetime(spring_agg['year'])
-summer_agg['year'] = pd.to_datetime(summer_agg['year'])
-fall_agg['year'] = pd.to_datetime(fall_agg['year'])
-
-
-winter_agg = winter_agg.set_index('year')
-
 #Create figure
 fig, axes = plt.subplots(nrows=2, ncols=2)
 ax11 = axes[0][0]
@@ -215,10 +173,7 @@ ax22.set_xlabel('Date')
 ax11.set_ylabel('Temperature [deg. C]')
 ax21.set_ylabel('Temperature [deg. C]')
 
-
-
-
-winter_dates = pd.DatetimeIndex(winter_agg)
+plt.savefig('seasonal_temperatures.png')
 
 
 '''
