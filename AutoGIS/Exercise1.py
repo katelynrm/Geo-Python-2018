@@ -39,7 +39,39 @@ def create_poly_geom_point(coords):
         return Polygon([[i.x, i.y] for i in coords])
 
 
+'''
+Problem 2
+'''
+#create a function that will find a centroid of a shapely object
+def get_centroid(geom):
+    assert geom.geom_type in ['Point', 'LineString', 'Polygon'], "Input should be a Shapely object"
+    return geom.centroid
 
+#create a function that will find the area of a shapely polygon
+def get_area(polygon):
+    assert polygon.geom_type is 'Polygon', "Input must be Shapely polygon"
+    return polygon.area
+
+
+# Demonstrate the usage of the function 
+
+# Create a Polygon with three points: Point(45.2, 22.34) & Point(100.22, -3.20) & Point(70.0, 10.20)
+# You can take advantage of the 'create_poly_geom' -function:
+
+
+# What is the area of this Polygon? Print the answer below by using the 'get_area' -function:
+test_point_list = [(45.2, 22.34), (100.22, -3.20), (70.0, 10.20)]
+test_poly = create_poly_geom_tuple(test_point_list)
+test_poly_area = get_area(test_poly)
+print(test_poly_area)
+
+
+def get_length(geom):
+    assert geom.geom_type in ['LineString', 'Polygon'], "Input must be a Shapely line or polygon"
+    return geom.length
+
+
+print(get_length(test_poly))
 
 
 
