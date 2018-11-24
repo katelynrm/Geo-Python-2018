@@ -21,3 +21,25 @@ def create_line_geom(points):
 
 
 #create a function that will create a shapely polygon
+def create_poly_geom_tuple(coords):
+    assert type(coords) is list, "Input should be a list!"
+    assert len(coords) >= 3, "LineString object requires at least two Points!"
+    for i in coords:
+        assert type(i) is tuple, "All list values should be Shapely Point objects!"
+            
+            
+    return Polygon(coords)
+
+
+        
+def create_poly_geom_point(coords):
+    assert type(coords) is list, "Input should be a list!"
+    assert len(coords) >= 3, "LineString object requires at least two Points!"
+    for i in coords:
+        return Polygon([[i.x, i.y] for i in coords])
+
+
+
+
+
+
