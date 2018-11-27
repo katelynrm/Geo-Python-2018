@@ -54,8 +54,24 @@ geo.loc[0,'geometry'] = poly
 #create a fp
 fp = r'C:\Users\katel\Documents\AutoGIS\2018\Geo-Python-2018\AutoGIS\polygon.shp'
 
-#write to a shp
+#set proj and write to shp
+geo.crs = from_epsg(4326)
 geo.to_file(fp)
+
+
+#plot the map
+geo.plot()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
