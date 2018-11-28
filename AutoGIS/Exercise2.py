@@ -4,8 +4,9 @@ Exercise 2
 """
 
 import geopandas as gpd
+import pandas as pd
 import matplotlib.pyplot as plt
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, Point, LineString
 from fiona.crs import from_epsg
 
 
@@ -62,12 +63,30 @@ geo.to_file(fp)
 #plot the map
 geo.plot()
 
+'''
+Problem 2 - create a points shp from a csv list of social media 'sites'
+'''
+#read in the csv file of points
+fp = r'C:\Users\katel\Documents\AutoGIS\2018\Geo-Python-2018\AutoGIS\some_posts.csv'
+
+data = pd.read_csv(fp)
+
+data['geometry'] = None
+
+#data_sam = data[:50]
+ 
+data['geometry'] = [Point(x,y) for x,y in zip(data.lon, data.lat)]
 
 
+#convert to a geodataframe then output a shp
 
+geo_points = gpd.GeoDataFrame(data, geometry='geometry', crs=from_epsg(4326))
 
+fp_p =r'C:\Users\katel\Documents\AutoGIS\2018\Geo-Python-2018\AutoGIS\Kruger_point.shp'
 
+geo_points.to_file(fp_p)
 
+geo_points.plot()
 
 
 
