@@ -11,6 +11,7 @@ import shapely.speedups
 import pandas as pd
 import pysal as ps
 import glob
+import numpy as np
 
 filepaths = glob.glob(r'C:\Users\katel\Documents\AutoGIS\2018\Geo-Python-2018\AutoGIS\E4_data\tfiles\*')
 fp_shp = r'C:\Users\katel\Documents\AutoGIS\2018\Geo-Python-2018\AutoGIS\E4_data\MetropAccess_YKR_grid_EurefFIN.shp'
@@ -24,13 +25,29 @@ for idx, fp in enumerate(filepaths):
 
 
 
+grid_keep = ['x', 'y', 'YKR_ID', 'geometry', 'pt_r_t_0',
+       'pt_r_t_1', 'pt_r_t_2', 'pt_r_t_3', 'pt_r_t_4', 'pt_r_t_5', 'from_id',
+       'pt_r_t_6']
+
+grid = grid[grid_keep]
+
+grid = grid.replace(-1, np.nan)
+
+grid = grid.dropna()
+
+grid['min_t'] = grid[['pt_r_t_0',
+       'pt_r_t_1', 'pt_r_t_2', 'pt_r_t_3', 'pt_r_t_4', 'pt_r_t_5', 'pt_r_t_6']].min(axis=1)
+
+grid['min_idx'] = grid[['pt_r_t_0',
+       'pt_r_t_1', 'pt_r_t_2', 'pt_r_t_3', 'pt_r_t_4', 'pt_r_t_5', 'pt_r_t_6']].idxmin(axis=1)
 
 
 
+grid.plot(column='min_idx', scheme="Fisher_Jenks", k=7, cmap="RdYlBu", linewidth=0)
+plt.title('dominance areas of shopping centers')
 
-
-
-
+grid.plot(column='min_t', scheme="Fisher_Jenks", k=9, cmap="RdYlBu", linewidth=0)
+plt.title('travel times closest to shopping centers')
 
 
 
